@@ -7,6 +7,7 @@ const makeApp = require('./makeApp')
 const { registerHealthController } = require('./controllers/healthController')
 const { registerExampleController } = require('./controllers/exampleController')
 const logger = require('./setup/logger')
+const { pool } = require('./setup/pg')
 
 async function main() {
   const NODE_ENV = config.get('env.NODE_ENV')
@@ -16,6 +17,9 @@ async function main() {
     registerFns: [registerExampleController, registerHealthController],
   })
   const server = http.createServer(app)
+
+  await pool.connect()
+  console.log("connected to postgres database")
 
   server.listen(PORT, () => {
     logger.info(

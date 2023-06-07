@@ -4,3 +4,4 @@ logs
 *.http
 *.rest
 coverage
+test.js
