@@ -1,0 +1,24 @@
+services:
+  api:
+    container_name: api
+    build:
+      context: ../
+    env_file: "../.env"
+    restart: always
+    volumes:
+      - "../logs:/usr/src/app/logs"
+  caddy:
+    container_name: caddy
+    image: caddy:2.6.4
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  caddy_data:
+  caddy_config:
