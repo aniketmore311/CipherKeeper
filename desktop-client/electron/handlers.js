@@ -1,4 +1,5 @@
-
+//@ts-check
+let state = require("./state")
 /**
  * @param {import("electron").IpcMain} ipcMain 
  */
