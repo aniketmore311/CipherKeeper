@@ -1,4 +1,3 @@
-
 export interface electronAPI {
     ping: () => Promise<String>
     getState: (key: string) => Promise<any>
