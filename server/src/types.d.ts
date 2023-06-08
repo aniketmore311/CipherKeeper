@@ -22,3 +22,11 @@ export type PasswordsTableRow = {
 	created_at: Date,
 	updated_at: Date,
 }
+
+export type PasswordRespDTO = {
+	id: number,
+	encryptedName: string,
+	encryptedValue: string,
+	createdAt: Date,
+	updatedAt: Date
+}

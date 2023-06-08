@@ -5,5 +5,6 @@ exports.auth = function () {
   return expressjwt({
     secret: config.get('jwt.secret'),
     algorithms: [config.get('jwt.algorithm')],
+    requestProperty: 'user',
   })
 }

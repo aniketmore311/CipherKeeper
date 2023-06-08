@@ -8,13 +8,20 @@ const { registerHealthController } = require('./controllers/healthController')
 const logger = require('./setup/logger')
 const { pool } = require('./setup/pg')
 const { registerAuthController } = require('./controllers/authController')
+const {
+  registerPasswordController,
+} = require('./controllers/passwordController')
 
 async function main() {
   const NODE_ENV = config.get('env.NODE_ENV')
   const PORT = config.get('application.port')
 
   const app = makeApp({
-    registerFns: [registerHealthController, registerAuthController],
+    registerFns: [
+      registerHealthController,
+      registerAuthController,
+      registerPasswordController,
+    ],
   })
   const server = http.createServer(app)
 
