@@ -10,9 +10,13 @@ export type UsersTableRow = {
     updated_at : Date
 }
 
+export type UserRespDTO = {
+	username: string
+}
+
 export type PasswordsTableRow = {
 	id: number,
-	name : string ,
+	encrypted_name : string ,
 	encrypted_value: string,
 	owner : string,
 	created_at: Date,

@@ -1,0 +1,6 @@
+{
+    "defaultEnv":{"ENV":"NODE_ENV"},
+    "development":{
+        "ENV":"DEV_DB_URI"
+    }
+}

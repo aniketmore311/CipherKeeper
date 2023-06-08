@@ -5,21 +5,21 @@ const http = require('http')
 
 const makeApp = require('./makeApp')
 const { registerHealthController } = require('./controllers/healthController')
-const { registerExampleController } = require('./controllers/exampleController')
 const logger = require('./setup/logger')
 const { pool } = require('./setup/pg')
+const { registerAuthController } = require('./controllers/authController')
 
 async function main() {
   const NODE_ENV = config.get('env.NODE_ENV')
   const PORT = config.get('application.port')
 
   const app = makeApp({
-    registerFns: [registerExampleController, registerHealthController],
+    registerFns: [registerHealthController, registerAuthController],
   })
   const server = http.createServer(app)
 
   await pool.connect()
-  console.log("connected to postgres database")
+  console.log('connected to postgres database')
 
   server.listen(PORT, () => {
     logger.info(
